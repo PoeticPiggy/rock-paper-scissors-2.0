@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let playerScore = 0;
+        let computerScore = 0;
+
+        function getComputerChoice() {
+            let choices = ["rock", "paper", "scissors"];
+            let randomNum = Math.floor(Math.random() * 3);
+            return(choices[randomNum]);
+        }
+
+        //computerChoice = getComputerChoice();
+
+        function getPlayerSelection() {
+            input = prompt("Rock, Paper or Scissors?");
+            return input.toLowerCase();
+        }
+
+        //playerSelection = getPlayerSelection();
+
+        function playRound(playerSelection, computerChoice) {
+            computerChoice = getComputerChoice();
+            console.log('Computer chose: ',computerChoice);
+            playerSelection = getPlayerSelection();
+            console.log('You chose: ',playerSelection);
+
+            if (playerSelection === computerChoice) {
+                result = ("It's a draw!")
+            } else if (playerSelection === "rock" && computerChoice === "paper") {
+                result = ("Computer wins! Paper beats Rock.")
+                computerScore++;
+            } else if (playerSelection === "paper" && computerChoice === "scissors") {
+                result = ("Computer wins! Scissors beats Paper.")
+                computerScore++;
+            } else if (playerSelection === "scissors" && computerChoice === "rock") {
+                result = ("Computer wins! Rock beats Scissors.")
+                computerScore++;
+            } else {
+                result = (`You win! ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)}`);
+                playerScore++;
+            }
+            return result;
+        }
+
+        function game (playerSelection, computerChoice) {
+            for (let round = 0; round < 5; round++) {
+                console.log(playRound(playerSelection, computerChoice));
+                console.log(`Your score is ${playerScore}. Computer's score is ${computerScore}`)
+            }
+            if (round = 5) {
+                determineWinner();
+            }
+        }
+
+        function determineWinner () {
+            if (playerScore > computerScore) {
+                console.log(`Congratulations, you have defeated the evil computer.`)
+            }
+            else if (computerScore > playerScore) {
+                console.log("Are you stupid? You cant even beat a computer at rock, paper, scissors?");
+            }
+            else {
+                console.log("Hmph, its a draw...");
+           }
+        }
+
+        game();
+        
+    </script>
+</body>
+</html>
