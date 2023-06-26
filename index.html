@@ -7,7 +7,28 @@
     <title>Document</title>
 </head>
 <body>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+    <div id = 'playerSelection'></div>
+    <div id = 'computerSelection'></div>
+    <div id="displayRoundResult"></div>
+    <div id="displayScore">Select an option to start a game!</div>
+
     <script>
+        const displayScore = document.querySelector('#displayScore');
+        const displayPlayerSelection = document.querySelector('#playerSelection');
+        const displayComputerSelection = document.querySelector('#computerSelection');
+        const displayRoundResult = document.querySelector('#displayRoundResult');
+        const buttons = document.querySelectorAll('button');
+        
+        
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                displayRoundResult.textContent = (playRound((button.id)));
+            });
+        });
+
         let playerScore = 0;
         let computerScore = 0;
 
@@ -17,20 +38,10 @@
             return(choices[randomNum]);
         }
 
-        //computerChoice = getComputerChoice();
-
-        function getPlayerSelection() {
-            input = prompt("Rock, Paper or Scissors?");
-            return input.toLowerCase();
-        }
-
-        //playerSelection = getPlayerSelection();
-
         function playRound(playerSelection, computerChoice) {
             computerChoice = getComputerChoice();
-            console.log('Computer chose: ',computerChoice);
-            playerSelection = getPlayerSelection();
-            console.log('You chose: ',playerSelection);
+            displayComputerSelection.textContent =(`Computer chose: ${computerChoice}`);
+            displayPlayerSelection.textContent = (`You chose: ${playerSelection}`);
 
             if (playerSelection === computerChoice) {
                 result = ("It's a draw!")
@@ -47,33 +58,9 @@
                 result = (`You win! ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)}`);
                 playerScore++;
             }
+            displayScore.textContent = (`Your score is: ${playerScore}, Computers score is: ${computerScore}`);
             return result;
         }
-
-        function game (playerSelection, computerChoice) {
-            for (let round = 0; round < 5; round++) {
-                console.log(playRound(playerSelection, computerChoice));
-                console.log(`Your score is ${playerScore}. Computer's score is ${computerScore}`)
-            }
-            if (round = 5) {
-                determineWinner();
-            }
-        }
-
-        function determineWinner () {
-            if (playerScore > computerScore) {
-                console.log(`Congratulations, you have defeated the evil computer.`)
-            }
-            else if (computerScore > playerScore) {
-                console.log("Are you stupid? You cant even beat a computer at rock, paper, scissors?");
-            }
-            else {
-                console.log("Hmph, its a draw...");
-           }
-        }
-
-        game();
-        
     </script>
 </body>
 </html>
