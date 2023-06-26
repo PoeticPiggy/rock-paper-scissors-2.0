@@ -13,6 +13,7 @@
     <div id = 'playerSelection'></div>
     <div id = 'computerSelection'></div>
     <div id="displayRoundResult"></div>
+    <div id="displayGameResult"></div>
     <div id="displayScore">Select an option to start a game!</div>
 
     <script>
@@ -20,17 +21,21 @@
         const displayPlayerSelection = document.querySelector('#playerSelection');
         const displayComputerSelection = document.querySelector('#computerSelection');
         const displayRoundResult = document.querySelector('#displayRoundResult');
+        const displayGameResult = document.querySelector('#displayGameResult');
         const buttons = document.querySelectorAll('button');
         
-        
-        buttons.forEach((button) => {
-            button.addEventListener('click', () => {
-                displayRoundResult.textContent = (playRound((button.id)));
-            });
-        });
-
         let playerScore = 0;
         let computerScore = 0;
+
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                if (playerScore < 5 && computerScore < 5 || playerScore === computerScore) {
+                    displayRoundResult.textContent = (playRound((button.id)));
+                } else {
+                    displayGameResult.textContent = (`GAME OVER: ${calculateWinner()}`);
+                }
+            });
+        });
 
         function getComputerChoice() {
             let choices = ["rock", "paper", "scissors"];
@@ -60,6 +65,14 @@
             }
             displayScore.textContent = (`Your score is: ${playerScore}, Computers score is: ${computerScore}`);
             return result;
+        }
+
+        function calculateWinner() {
+            if (playerScore > computerScore) {
+                winner = 'Congratulations, You Win!'
+            } else winner = 'Wow, you really got beat by a computer lmao';
+
+            return winner;
         }
     </script>
 </body>
