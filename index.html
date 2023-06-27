@@ -28,12 +28,11 @@
         let computerScore = 0;
 
         buttons.forEach((button) => {
-            button.addEventListener('click', () => {
-                if (playerScore < 5 && computerScore < 5 || playerScore === computerScore) {
+           button.addEventListener('click', () => {
+               if (playerScore < 5 && computerScore < 5 || playerScore === computerScore) {
                     displayRoundResult.textContent = (playRound((button.id)));
-                } else {
-                    displayGameResult.textContent = (`GAME OVER: ${calculateWinner()}`);
                 }
+                displayGameResult.textContent = calculateWinner();
             });
         });
 
@@ -68,11 +67,11 @@
         }
 
         function calculateWinner() {
-            if (playerScore > computerScore) {
-                winner = 'Congratulations, You Win!'
-            } else winner = 'Wow, you really got beat by a computer lmao';
-
-            return winner;
+            if (playerScore > computerScore && playerScore === 5) {
+                return 'GAME OVER: Congratulations, You Win!'
+            } else if (computerScore > playerScore && computerScore === 5) {
+                return 'GAME OVER: Wow, you really got beat by a computer lmao';
+            }
         }
     </script>
 </body>
