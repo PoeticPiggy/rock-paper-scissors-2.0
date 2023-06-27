@@ -83,11 +83,9 @@
 
         function calculateWinner() {
             if (playerScore > computerScore && playerScore === 5) {
-                gameOver === true;
                 document.getElementById('reset').style.visibility = 'visible';
                 return 'GAME OVER: Congratulations, You Win!'
             } else if (computerScore > playerScore && computerScore === 5) {
-                gameOver === true;
                 document.getElementById('reset').style.visibility = 'visible';
                 return 'GAME OVER: Wow, you really got beat by a computer lmao';
             }
@@ -105,10 +103,7 @@
             displayRoundResult.textContent = '';
             displayGameResult.textContent = 'Select an option to start a game!';
         }
-        //checks if playerscore = 5 or computerscore = 5 instead of doing it in calculateWinner func
-        function isGameOver() {
-
-        }
+        
     </script>
 </body>
 </html>
