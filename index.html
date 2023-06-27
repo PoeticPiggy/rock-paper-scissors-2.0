@@ -31,6 +31,7 @@
         let gameOver = false
         document.getElementById('reset').style.visibility = 'hidden';
 
+        //Runs playround when button is clicked and then displays game results when player/computer score = 5 and they arent the same number
         buttons.forEach((button) => {
            button.addEventListener('click', () => {
                if (playerScore < 5 && computerScore < 5 || playerScore === computerScore) {
@@ -40,34 +41,37 @@
             });
         });
 
+        //Runs reset game func when clicked
         reset.addEventListener('click', () => {
             resetGame();
         });
 
+        //Picks rock, paper or scissors randomly
         function getComputerChoice() {
             let choices = ["rock", "paper", "scissors"];
             let randomNum = Math.floor(Math.random() * 3);
             return(choices[randomNum]);
         }
 
+        //Plays one round of rock paper scissors
         function playRound(playerSelection, computerChoice) {
             computerChoice = getComputerChoice();
             displayComputerSelection.textContent =(`Computer chose: ${computerChoice}`);
             displayPlayerSelection.textContent = (`You chose: ${playerSelection}`);
 
             if (playerSelection === computerChoice) {
-                result = ("It's a draw!")
+                result = ("This round is a draw!")
             } else if (playerSelection === "rock" && computerChoice === "paper") {
-                result = ("Computer wins! Paper beats Rock.")
+                result = ("Computer wins this round! - Paper beats Rock.")
                 computerScore++;
             } else if (playerSelection === "paper" && computerChoice === "scissors") {
-                result = ("Computer wins! Scissors beats Paper.")
+                result = ("Computer wins this round! - Scissors beats Paper.")
                 computerScore++;
             } else if (playerSelection === "scissors" && computerChoice === "rock") {
-                result = ("Computer wins! Rock beats Scissors.")
+                result = ("Computer wins this round! - Rock beats Scissors.")
                 computerScore++;
             } else {
-                result = (`You win! ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)}`);
+                result = (`You win this round! - ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)}`);
                 playerScore++;
             }
             displayScore.textContent = (`Your score is: ${playerScore}, Computers score is: ${computerScore}`);
@@ -86,6 +90,7 @@
             }
         }
 
+        //Resets everything to default
         function resetGame() {
             gameOver = false;
             playerScore = 0;
@@ -96,6 +101,10 @@
             displayPlayerSelection.textContent = '';
             displayRoundResult.textContent = '';
             displayGameResult.textContent = 'Select an option to start a game!';
+        }
+        //checks if playerscore = 5 or computerscore = 5 instead of doing it in calculateWinner func
+        function isGameOver() {
+
         }
     </script>
 </body>
