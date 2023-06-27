@@ -7,14 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
+    <button id="rock" class="choice">Rock</button>
+    <button id="paper" class="choice">Paper</button>
+    <button id="scissors" class="choice">Scissors</button>
     <div id = 'playerSelection'></div>
     <div id = 'computerSelection'></div>
     <div id="displayRoundResult"></div>
     <div id="displayGameResult"></div>
     <div id="displayScore">Select an option to start a game!</div>
+    <button id = "reset">Play Again</button>
 
     <script>
         const displayScore = document.querySelector('#displayScore');
@@ -22,10 +23,13 @@
         const displayComputerSelection = document.querySelector('#computerSelection');
         const displayRoundResult = document.querySelector('#displayRoundResult');
         const displayGameResult = document.querySelector('#displayGameResult');
-        const buttons = document.querySelectorAll('button');
+        const reset = document.querySelector('#reset');
+        const buttons = document.querySelectorAll('.choice');
         
         let playerScore = 0;
         let computerScore = 0;
+        let gameOver = false
+        document.getElementById('reset').style.visibility = 'hidden';
 
         buttons.forEach((button) => {
            button.addEventListener('click', () => {
@@ -34,6 +38,10 @@
                 }
                 displayGameResult.textContent = calculateWinner();
             });
+        });
+
+        reset.addEventListener('click', () => {
+            resetGame();
         });
 
         function getComputerChoice() {
@@ -68,10 +76,26 @@
 
         function calculateWinner() {
             if (playerScore > computerScore && playerScore === 5) {
+                gameOver === true;
+                document.getElementById('reset').style.visibility = 'visible';
                 return 'GAME OVER: Congratulations, You Win!'
             } else if (computerScore > playerScore && computerScore === 5) {
+                gameOver === true;
+                document.getElementById('reset').style.visibility = 'visible';
                 return 'GAME OVER: Wow, you really got beat by a computer lmao';
             }
+        }
+
+        function resetGame() {
+            gameOver = false;
+            playerScore = 0;
+            computerScore = 0;
+            document.getElementById('reset').style.visibility = 'hidden';
+            displayScore.textContent = '';
+            displayComputerSelection.textContent = '';
+            displayPlayerSelection.textContent = '';
+            displayRoundResult.textContent = '';
+            displayGameResult.textContent = 'Select an option to start a game!';
         }
     </script>
 </body>
