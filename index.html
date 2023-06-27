@@ -9,9 +9,9 @@
 </head>
 <body>
     <div class="container">
-        <button id="rock" class="choice">Rock</button>
-        <button id="paper" class="choice">Paper</button>
-        <button id="scissors" class="choice">Scissors</button>
+        <button id="Rock" class="choice">Rock</button>
+        <button id="Paper" class="choice">Paper</button>
+        <button id="Scissors" class="choice">Scissors</button>
         <div id = 'playerSelection'></div>
         <div id = 'computerSelection'></div>
         <div id="displayRoundResult"></div>
@@ -51,7 +51,7 @@
 
         //Picks rock, paper or scissors randomly
         function getComputerChoice() {
-            let choices = ["rock", "paper", "scissors"];
+            let choices = ["Rock", "Paper", "Scissors"];
             let randomNum = Math.floor(Math.random() * 3);
             return(choices[randomNum]);
         }
