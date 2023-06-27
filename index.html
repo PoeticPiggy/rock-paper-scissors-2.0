@@ -74,7 +74,7 @@
                 result = ("Computer wins this round! - Rock beats Scissors.")
                 computerScore++;
             } else {
-                result = (`You win this round! - ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)}`);
+                result = (`You win this round! - ${playerSelection} beats ${computerChoice}`);
                 playerScore++;
             }
             displayScore.textContent = (`Your score is: ${playerScore}, Computers score is: ${computerScore}`);
