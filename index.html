@@ -5,18 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button id="rock" class="choice">Rock</button>
-    <button id="paper" class="choice">Paper</button>
-    <button id="scissors" class="choice">Scissors</button>
-    <div id = 'playerSelection'></div>
-    <div id = 'computerSelection'></div>
-    <div id="displayRoundResult"></div>
-    <div id="displayGameResult"></div>
-    <div id="displayScore">Select an option to start a game!</div>
-    <button id = "reset">Play Again</button>
+    <div class="container">
+        <button id="rock" class="choice">Rock</button>
+        <button id="paper" class="choice">Paper</button>
+        <button id="scissors" class="choice">Scissors</button>
+        <div id = 'playerSelection'></div>
+        <div id = 'computerSelection'></div>
+        <div id="displayRoundResult"></div>
+        <div id="displayGameResult"></div>
+        <div id="displayScore">Select an option to start a game!</div>
+        <button id = "reset">Play Again</button>
+    </div>
 
     <script>
         const displayScore = document.querySelector('#displayScore');
