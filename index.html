@@ -11,9 +11,9 @@
 <body>
     <div class="container">
         <div class="choices">
-            <button id="Rock">Rock</button>
-            <button id="Paper">Paper</button>
-            <button id="Scissors">Scissors</button>
+            <button id="Rock" class="choice">Rock</button>
+            <button id="Paper" class="choice">Paper</button>
+            <button id="Scissors" class="choice">Scissors</button>
         </div>
         <div id="prompt">Select an option to start a game!</div>
         <div id = 'playerSelection'></div>
@@ -31,7 +31,7 @@
         const displayRoundResult = document.querySelector('#displayRoundResult');
         const displayGameResult = document.querySelector('#displayGameResult');
         const reset = document.querySelector('#reset');
-        const buttons = document.querySelectorAll('.choices');
+        const buttons = document.querySelectorAll('.choice');
         const prompt = document.querySelectorAll('#prompt');
         
         let playerScore = 0;
