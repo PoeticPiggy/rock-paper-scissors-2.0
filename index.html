@@ -6,17 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors</title>
     <link rel="stylesheet" href="style.css">
+    <link rel = "script" href="script.js"> 
 </head>
 <body>
     <div class="container">
-        <button id="Rock" class="choice">Rock</button>
-        <button id="Paper" class="choice">Paper</button>
-        <button id="Scissors" class="choice">Scissors</button>
+        <div>
+            <button id="Rock" class="choice">Rock</button>
+            <button id="Paper" class="choice">Paper</button>
+            <button id="Scissors" class="choice">Scissors</button>
+        </div>
+        <div id="prompt">Select an option to start a game!</div>
         <div id = 'playerSelection'></div>
         <div id = 'computerSelection'></div>
         <div id="displayRoundResult"></div>
         <div id="displayGameResult"></div>
-        <div id="displayScore">Select an option to start a game!</div>
+        <div id="displayScore"></div>
         <button id = "reset">Play Again</button>
     </div>
 
@@ -28,6 +32,7 @@
         const displayGameResult = document.querySelector('#displayGameResult');
         const reset = document.querySelector('#reset');
         const buttons = document.querySelectorAll('.choice');
+        const prompt = document.querySelectorAll('#prompt');
         
         let playerScore = 0;
         let computerScore = 0;
@@ -59,6 +64,7 @@
         //Plays one round of rock paper scissors
         function playRound(playerSelection, computerChoice) {
             computerChoice = getComputerChoice();
+            document.getElementById('prompt').style.visibility = ('hidden');
             displayComputerSelection.textContent =(`Computer chose: ${computerChoice}`);
             displayPlayerSelection.textContent = (`You chose: ${playerSelection}`);
 
