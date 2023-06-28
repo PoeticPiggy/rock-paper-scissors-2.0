@@ -20,18 +20,25 @@ body {
     align-items: center;
 }
 
-button {
-    font-size: 36px;
-    height: 60px;
-    width: 200px;
-}
-
 .choices {
     margin-top: 70px;
 }
 
 .choices button {
     border-radius: 7px;
+    font-size: 36px;
+    height: 60px;
+    width: 200px;
+}
+
+#prompt {
+    font-size: 26px;
+}
+
+.selections {
+    font-size: 24px;
+    display: flex;
+    gap: 175px;
 }
 
   
